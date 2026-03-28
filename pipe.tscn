@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://cml0oyqaw21pq"]
+
+[ext_resource type="Script" uid="uid://c3mwpsggr78sx" path="res://src/pipe.gd" id="1_78010"]
+[ext_resource type="Texture2D" uid="uid://bvyc0kdhchl8a" path="res://assets/Pipe.png" id="1_bepn3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78010"]
+size = Vector2(62, 274)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_08mfy"]
+size = Vector2(64, 275)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arayy"]
+size = Vector2(62, 274)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3wvs"]
+size = Vector2(64, 275)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1uqvy"]
+size = Vector2(60, 128)
+
+[node name="Pipe" type="Node2D" unique_id=1898487637]
+script = ExtResource("1_78010")
+
+[node name="TopPipe" type="StaticBody2D" parent="." unique_id=1132941870]
+position = Vector2(0, -30)
+
+[node name="Pipe" type="Sprite2D" parent="TopPipe" unique_id=1192183872]
+position = Vector2(0, -171)
+rotation = 3.1415927
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("1_bepn3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopPipe" unique_id=665564453]
+position = Vector2(0, -171)
+shape = SubResource("RectangleShape2D_78010")
+
+[node name="HitBox" type="Area2D" parent="TopPipe" unique_id=2031087465]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopPipe/HitBox" unique_id=884429041]
+position = Vector2(0, -170.5)
+shape = SubResource("RectangleShape2D_08mfy")
+
+[node name="BottomPipe" type="StaticBody2D" parent="." unique_id=935887817]
+position = Vector2(0, 30)
+
+[node name="Pipe" type="Sprite2D" parent="BottomPipe" unique_id=1947193931]
+position = Vector2(0, 171)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("1_bepn3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomPipe" unique_id=2112217057]
+position = Vector2(0, 171)
+shape = SubResource("RectangleShape2D_arayy")
+
+[node name="HitBox" type="Area2D" parent="BottomPipe" unique_id=873336170]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomPipe/HitBox" unique_id=857775723]
+position = Vector2(0, 170.5)
+shape = SubResource("RectangleShape2D_i3wvs")
+
+[node name="ScoreZone" type="Area2D" parent="." unique_id=978256901]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreZone" unique_id=2082054338]
+shape = SubResource("RectangleShape2D_1uqvy")

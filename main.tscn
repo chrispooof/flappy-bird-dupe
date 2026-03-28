@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://tdfbea4dvwit"]
+
+[ext_resource type="Script" uid="uid://7ubp4frlk07r" path="res://src/player.gd" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://kau7p3l1nbtm" path="res://src/main.gd" id="1_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://bqhel4gtaj8qp" path="res://assets/FlappyBird.png" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://cvccipv64m72l" path="res://assets/Background.png" id="2_1bvp3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h2yge"]
+radius = 15.0
+height = 46.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1bvp3"]
+radius = 15.0
+height = 46.0
+
+[node name="main" type="Node2D" unique_id=499712274]
+script = ExtResource("1_1bvp3")
+
+[node name="Background" type="Node2D" parent="." unique_id=114997074]
+
+[node name="Background2" type="Sprite2D" parent="Background" unique_id=1730230601]
+position = Vector2(160, 160.25)
+scale = Vector2(0.32000002, 0.3195)
+texture = ExtResource("2_1bvp3")
+
+[node name="Clouds" type="Node2D" parent="." unique_id=193939368]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1971112152]
+position = Vector2(100, 160)
+script = ExtResource("1_0xm2m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1293916346]
+z_index = 1
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_h2yge")
+
+[node name="FlappyBird" type="Sprite2D" parent="Player" unique_id=1811132394]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_ig7tw")
+
+[node name="HitBox" type="Area2D" parent="Player" unique_id=1224414274]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/HitBox" unique_id=1577818492]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_1bvp3")
+
+[node name="Pipes" type="Node2D" parent="." unique_id=1481986546]
+
+[node name="Grass" type="Node2D" parent="." unique_id=746416345]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=982382848]
+
+[node name="Label" type="Label" parent="UI" unique_id=1942626915]
+anchors_preset = -1
+anchor_bottom = 0.096875
+offset_left = 18.0
+offset_right = 58.0
+offset_bottom = 23.0
+metadata/_edit_use_anchors_ = true
