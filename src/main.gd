@@ -1,10 +1,10 @@
 extends Node2D
 
-@onready var pipe_scene = preload("res://pipe.tscn")
+@onready var pipe_scene = preload("res://scenes/pipe.tscn")
 @onready var pipes = $Pipes
-@onready var grass_scene = preload("res://grass.tscn")
+@onready var grass_scene = preload("res://scenes/grass.tscn")
 @onready var grass = $Grass
-@onready var cloud_scene = preload("res://cloud.tscn")
+@onready var cloud_scene = preload("res://scenes/cloud.tscn")
 @onready var clouds = $Clouds
 
 
