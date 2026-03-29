@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://kau7p3l1nbtm" path="res://src/main.gd" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bqhel4gtaj8qp" path="res://assets/FlappyBird.png" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://cvccipv64m72l" path="res://assets/Background.png" id="2_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://bexb6le4eaxh1" path="res://assets/GameOver.png" id="5_o6xl0"]
 [ext_resource type="Script" uid="uid://dbug42qqc7q54" path="res://src/grass.gd" id="5_tefeu"]
 [ext_resource type="Texture2D" uid="uid://6ec0176rsunw" path="res://assets/Grass.png" id="6_o6xl0"]
 
@@ -26,7 +27,7 @@ script = ExtResource("1_1bvp3")
 
 [node name="Background" type="Node2D" parent="." unique_id=114997074]
 
-[node name="Background2" type="Sprite2D" parent="Background" unique_id=1730230601]
+[node name="Background" type="Sprite2D" parent="Background" unique_id=1730230601]
 position = Vector2(159.99997, 160.25)
 scale = Vector2(0.32000002, 0.3195)
 texture = ExtResource("2_1bvp3")
@@ -84,13 +85,20 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="UI/GameOverScreen" unique_id=1454300442]
+[node name="GameOver" type="Sprite2D" parent="UI/GameOverScreen" unique_id=2094281867]
+position = Vector2(160, 160)
+scale = Vector2(0.16086957, 0.16086957)
+texture = ExtResource("5_o6xl0")
+
+[node name="Label" type="Label" parent="UI/GameOverScreen" unique_id=1355221934]
 layout_mode = 0
-offset_left = 115.0
-offset_top = 53.0
-offset_right = 202.0
-offset_bottom = 76.0
-text = "Game Over"
+offset_left = 53.0
+offset_top = 200.0
+offset_right = 266.0
+offset_bottom = 223.0
+text = "Press \"space\" to play again!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GrassBody" type="StaticBody2D" parent="." unique_id=1262254372]
 script = ExtResource("5_tefeu")

@@ -32,6 +32,8 @@ func _process(delta: float) -> void:
 		GameState.State.GAME_OVER:
 			start_screen.visible = false
 			game_over_screen.visible = true
+			if Input.is_action_just_pressed("ui_accept"):
+				restart_game()
 
 func handle_spawning(delta):
 	spawn_timer += delta
@@ -55,7 +57,7 @@ func set_state(new_state: GameState.State):
 
 	start_screen.visible = (current_state == GameState.State.START)
 	game_over_screen.visible = (current_state == GameState.State.GAME_OVER)
-	score_label.visible = (current_state == GameState.State.PLAYING)
+	score_label.visible = (current_state == GameState.State.PLAYING) || (current_state == GameState.State.GAME_OVER)
 
 	if new_state == GameState.State.START:
 		reset_game()
