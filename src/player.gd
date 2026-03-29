@@ -7,9 +7,10 @@ const GRAVITY = 900.0
 
 
 func _physics_process(delta):
-	velocity.y += GRAVITY * delta
+	if get_parent().current_state == get_parent().GameState.PLAYING:
+		velocity.y += GRAVITY * delta
 
-	if Input.is_action_just_pressed("ui_accept"):
-		velocity.y = JUMP_VELOCITY
+		if Input.is_action_just_pressed("ui_accept"):
+			velocity.y = JUMP_VELOCITY
 
-	move_and_slide()
+		move_and_slide()

@@ -5,10 +5,13 @@ const SPEED = 200.0
 
 func _ready():
 	$ScoreZone.body_entered.connect(_on_score_zone_entered)
-	$TopPipe.get_node('HitBox').body_entered.connect(_on_hit_pipe)
-	$BottomPipe.get_node('HitBox').body_entered.connect(_on_hit_pipe)
+	$TopPipe/HitBox.body_entered.connect(_on_hit_pipe)
+	$BottomPipe/HitBox.body_entered.connect(_on_hit_pipe)
 
 func _process(delta: float) -> void:
+	if get_parent().get_parent().current_state != get_parent().get_parent().GameState.PLAYING:
+		return
+
 	position.x -= SPEED * delta
 
 	if position.x < -100:
@@ -16,7 +19,7 @@ func _process(delta: float) -> void:
 
 func _on_hit_pipe(body):
 	if body.name == "Player":
-		get_tree().reload_current_scene()
+		get_parent().get_parent().game_over()
 
 
 func _on_score_zone_entered(body):

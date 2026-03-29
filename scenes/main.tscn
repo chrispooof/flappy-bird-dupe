@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://kau7p3l1nbtm" path="res://src/main.gd" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bqhel4gtaj8qp" path="res://assets/FlappyBird.png" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://cvccipv64m72l" path="res://assets/Background.png" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://dbug42qqc7q54" path="res://src/grass.gd" id="5_tefeu"]
+[ext_resource type="Texture2D" uid="uid://6ec0176rsunw" path="res://assets/Grass.png" id="6_o6xl0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h2yge"]
 radius = 15.0
@@ -13,13 +15,19 @@ height = 46.0
 radius = 15.0
 height = 46.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tipki"]
+size = Vector2(320, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85g3d"]
+size = Vector2(320, 25.5)
+
 [node name="main" type="Node2D" unique_id=499712274]
 script = ExtResource("1_1bvp3")
 
 [node name="Background" type="Node2D" parent="." unique_id=114997074]
 
 [node name="Background2" type="Sprite2D" parent="Background" unique_id=1730230601]
-position = Vector2(160, 160.25)
+position = Vector2(159.99997, 160.25)
 scale = Vector2(0.32000002, 0.3195)
 texture = ExtResource("2_1bvp3")
 
@@ -46,8 +54,6 @@ shape = SubResource("CapsuleShape2D_1bvp3")
 
 [node name="Pipes" type="Node2D" parent="." unique_id=1481986546]
 
-[node name="Grass" type="Node2D" parent="." unique_id=746416345]
-
 [node name="UI" type="CanvasLayer" parent="." unique_id=982382848]
 
 [node name="Label" type="Label" parent="UI" unique_id=1942626915]
@@ -57,3 +63,49 @@ offset_left = 18.0
 offset_right = 58.0
 offset_bottom = 23.0
 metadata/_edit_use_anchors_ = true
+
+[node name="StartScreen" type="Control" parent="UI" unique_id=275372096]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI/StartScreen" unique_id=1050562332]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 245.0
+offset_right = 238.0
+offset_bottom = 268.0
+text = "Press \"space\" to start"
+
+[node name="GameOverScreen" type="Control" parent="UI" unique_id=1186264399]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI/GameOverScreen" unique_id=1454300442]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 53.0
+offset_right = 202.0
+offset_bottom = 76.0
+text = "Game Over"
+
+[node name="GrassBody" type="StaticBody2D" parent="." unique_id=1262254372]
+script = ExtResource("5_tefeu")
+
+[node name="Grass" type="Sprite2D" parent="GrassBody" unique_id=672505895]
+position = Vector2(160.00003, 308)
+scale = Vector2(0.1403509, 0.21818165)
+texture = ExtResource("6_o6xl0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrassBody" unique_id=2115582101]
+position = Vector2(160, 308)
+shape = SubResource("RectangleShape2D_tipki")
+
+[node name="HitBox" type="Area2D" parent="GrassBody" unique_id=2018680393]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrassBody/HitBox" unique_id=497644618]
+position = Vector2(160, 307.25)
+shape = SubResource("RectangleShape2D_85g3d")
