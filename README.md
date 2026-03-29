@@ -9,7 +9,7 @@ Small game made using Godot to learn fundamentals of game development and concep
 
 ## Demo
 
-<video src="https://github.com/user-attachments/assets/8c9bf6f4-92e0-481a-a778-567bb66325bc" width="300" height="240" controls ></video>
+<video src="https://github.com/user-attachments/assets/c807e81e-c4fc-462c-9f36-6e6ef54e541a" width="300" height="240" controls ></video>
 
 ## Controls
 
