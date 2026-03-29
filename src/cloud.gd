@@ -10,7 +10,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if get_parent().get_parent().current_state != get_parent().get_parent().GameState.PLAYING:
+	if get_parent().get_parent().current_state != GameState.State.PLAYING:
 		return
 
 	position.x -= SPEED * delta

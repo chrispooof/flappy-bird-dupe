@@ -1,10 +1,5 @@
 extends Node2D
 
-enum GameState {
-	START,
-	PLAYING,
-	GAME_OVER
-}
 
 @onready var pipe_scene = preload("res://scenes/pipe.tscn")
 @onready var pipes = $Pipes
@@ -15,7 +10,7 @@ enum GameState {
 @onready var score_label = $UI/Label
 @onready var player = $Player
 
-var current_state = GameState.START
+var current_state = GameState.State.START
 var spawn_timer = 0.0
 var score = 0
 
@@ -28,13 +23,13 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	match current_state:
-		GameState.START:
+		GameState.State.START:
 			if Input.is_action_just_pressed("ui_accept"):
 				start_game()
 
-		GameState.PLAYING:
+		GameState.State.PLAYING:
 			handle_spawning(delta)
-		GameState.GAME_OVER:
+		GameState.State.GAME_OVER:
 			start_screen.visible = false
 			game_over_screen.visible = true
 
@@ -47,22 +42,22 @@ func handle_spawning(delta):
 		spawn_timer = 0.0
 
 func start_game():
-	set_state(GameState.PLAYING)
+	set_state(GameState.State.PLAYING)
 
 func game_over():
-	set_state(GameState.GAME_OVER)
+	set_state(GameState.State.GAME_OVER)
 
 func restart_game():
 	get_tree().reload_current_scene()
 
-func set_state(new_state: GameState):
+func set_state(new_state: GameState.State):
 	current_state = new_state
 
-	start_screen.visible = (current_state == GameState.START)
-	game_over_screen.visible = (current_state == GameState.GAME_OVER)
-	score_label.visible = (current_state == GameState.PLAYING)
+	start_screen.visible = (current_state == GameState.State.START)
+	game_over_screen.visible = (current_state == GameState.State.GAME_OVER)
+	score_label.visible = (current_state == GameState.State.PLAYING)
 
-	if new_state == GameState.START:
+	if new_state == GameState.State.START:
 		reset_game()
 
 func reset_game():

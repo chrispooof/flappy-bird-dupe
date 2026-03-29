@@ -9,7 +9,7 @@ func _ready():
 	$BottomPipe/HitBox.body_entered.connect(_on_hit_pipe)
 
 func _process(delta: float) -> void:
-	if get_parent().get_parent().current_state != get_parent().get_parent().GameState.PLAYING:
+	if get_parent().get_parent().current_state != GameState.State.PLAYING:
 		return
 
 	position.x -= SPEED * delta

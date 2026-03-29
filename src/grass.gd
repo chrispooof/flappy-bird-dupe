@@ -8,4 +8,4 @@ func _ready() -> void:
 
 func _on_hit_ground(body):
 	if body.name == "Player":
-		get_parent().get_parent().game_over()
+		get_parent().game_over()
